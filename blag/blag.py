@@ -168,7 +168,7 @@ def get_config(configfile: str) -> configparser.SectionProxy:
 
     """
     config = configparser.ConfigParser()
-    config.read(configfile)
+    config.read(configfile,encoding='utf-8')
     # check for the mandatory options
     for value in 'base_url', 'title', 'description', 'author':
         try:
