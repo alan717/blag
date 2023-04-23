@@ -325,7 +325,7 @@ def process_markdown(
     for src, dst in convertibles:
         logger.debug(f'Processing {src}')
 
-        with open(f'{input_dir}/{src}', 'r') as fh:
+        with open(f'{input_dir}/{src}', 'r',encoding='utf-8') as fh:
             body = fh.read()
 
         content, meta = convert_markdown(md, body)
@@ -341,7 +341,7 @@ def process_markdown(
         else:
             pages.append((dst, context))
             result = page_template.render(context)
-        with open(f'{output_dir}/{dst}', 'w') as fh_dest:
+        with open(f'{output_dir}/{dst}', 'w',encoding='utf-8') as fh_dest:
             fh_dest.write(result)
 
     # sort articles by date, descending
@@ -397,8 +397,8 @@ def generate_feed(
             pubdate=context['date'],
         )
 
-    with open(f'{output_dir}/atom.xml', 'w') as fh:
-        feed.write(fh, encoding='utf8')
+    with open(f'{output_dir}/atom.xml', 'w',encoding='utf-8') as fh:
+        feed.write(fh, encoding='utf-8')
 
 
 def generate_archive(
@@ -424,7 +424,7 @@ def generate_archive(
         archive.append(entry)
 
     result = template.render(dict(archive=archive))
-    with open(f'{output_dir}/index.html', 'w') as fh:
+    with open(f'{output_dir}/index.html', 'w',encoding='utf-8') as fh:
         fh.write(result)
 
 
@@ -459,7 +459,7 @@ def generate_tags(
     )
 
     result = tags_template.render(dict(tags=taglist))
-    with open(f'{output_dir}/tags/index.html', 'w') as fh:
+    with open(f'{output_dir}/tags/index.html', 'w',encoding='utf-8') as fh:
         fh.write(result)
 
     # get tags and archive per tag
@@ -475,7 +475,7 @@ def generate_tags(
 
     for tag, archive in all_tags2.items():
         result = tag_template.render(dict(archive=archive, tag=tag))
-        with open(f'{output_dir}/tags/{tag}.html', 'w') as fh:
+        with open(f'{output_dir}/tags/{tag}.html', 'w',encoding='utf-8') as fh:
             fh.write(result)
 
 
