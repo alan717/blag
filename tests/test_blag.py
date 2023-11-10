@@ -100,7 +100,7 @@ def test_generate_feed_with_description(cleandir: str) -> None:
 def test_parse_args_build() -> None:
     # test default args
     args = blag.parse_args(['build'])
-    assert args.input_dir == 'content'
+    assert args.input_dir == 'public'
     assert args.output_dir == 'build'
     assert args.template_dir == 'templates'
     assert args.static_dir == 'static'
