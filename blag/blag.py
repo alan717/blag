@@ -92,7 +92,7 @@ def parse_args(args: list[str] | None = None) -> argparse.Namespace:
     build_parser.add_argument(
         '-i',
         '--input-dir',
-        default='content',
+        default='public',
         help='Input directory (default: content)',
     )
     build_parser.add_argument(
