@@ -475,7 +475,8 @@ def generate_tags(
 
     for tag, archive in all_tags2.items():
         result = tag_template.render(dict(archive=archive, tag=tag))
-        with open(f'{output_dir}/tags/{tag}.html', 'w', encoding='utf-8') as fh:
+        with open(f'{output_dir}/tags/{tag}.html', 'w',
+                  encoding='utf-8') as fh:
             fh.write(result)
 
 
